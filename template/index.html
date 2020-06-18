@@ -133,58 +133,5 @@
 
 	<div id="dropDownSelect1"></div>
 
-<!--===============================================================================================-->
-	<script src="{{ url_for('static',filename='vendor/jquery/jquery-3.2.1.min.js') }}"></script>
-<!--===============================================================================================-->
-	<script src="{{ url_for('static',filename='vendor/animsition/js/animsition.min.js') }}"></script>
-<!--===============================================================================================-->
-	<script src="{{ url_for('static',filename='vendor/bootstrap/js/popper.js') }}"></script>
-	<script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-<!--===============================================================================================-->
-	<script src="{{ url_for('static',filename='vendor/select2/select2.min.js') }}"></script>
-	<script>
-		$(".selection-2").select2({
-			minimumResultsForSearch: 20,
-			dropdownParent: $('#dropDownSelect1')
-		});
-	</script>
-<!--===============================================================================================-->
-	<script src="{{ url_for('static',filename='vendor/daterangepicker/moment.min.js') }}"></script>
-	<script src="{{ url_for('static',filename='vendor/daterangepicker/daterangepicker.js') }}"></script>
-<!--===============================================================================================-->
-	<script src="{{ url_for('static',filename='vendor/countdowntime/countdowntime.js') }}"></script>
-<!--===============================================================================================-->
-	<script src="{{ url_for('static',filename='js/main.js') }}"></script>
-	<!-- include sweetAlert plugin -->
-	<script src="{{ url_for('static',filename='js/sweetalert2.all.js') }}"></script>
-	<script type="text/javascript">
-		$(function () {
-
-	        $("button#predict").click(function(e){
-	        	e.preventDefault();
-	        	/*Get for variabes*/
-	        	var mileage_kms = $("#mileage_kms").val(), year = $("#year").val(), make = $("#make").val();
-	        	var power_hp = $("#power_hp").val(), transmission = $("#transmission").val();
-	        	/*create the JSON object*/
-	        	var data = {"mileage_kms":mileage_kms, "year":year, "make":make, "power_hp":power_hp,
-	        	"transmission":transmission}
-	        	/*send the ajax request*/
-	        	$.ajax({
-	        		method : "POST",
-	        		url : window.location.href + 'api',
-	        		data : $('form').serialize(),
-	        		success : function(result){
-	        			var json_result = JSON.parse(result);
-	        			var price = json_result['price'];
-	        			swal('Estimated price is 'RM' '+price+', '','success')
-	        		},
-	        		error : function(){
-	        			console.log("error")
-	        		}
-	        	})
-	        })
-
-		});
-	</script>
 </body>
 </html>
