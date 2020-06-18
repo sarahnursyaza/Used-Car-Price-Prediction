@@ -12,17 +12,6 @@ app = Flask(__name__, template_folder='template')
 def home():
     return render_template('index.html')
 
-
-#@app.route('/api', methods=['POST'])
-#def make_prediction():
-    #data = request.get_json(force=True)
-    #convert our json to a numpy array
-    #one_hot_data = input_to_one_hot(data)
-    #predict_request = gbr.predict([one_hot_data])
-    #output = [predict_request[0]]
-    #print(data)
-    #return jsonify(results=output)
-
 def input_to_one_hot(data):
     # initialize the target vector with zero values
     enc_input = np.zeros(45)
